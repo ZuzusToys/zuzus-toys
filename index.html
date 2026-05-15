@@ -279,26 +279,6 @@ section{
     transform:translateY(-8px);
 }
 
-/* REVIEWS */
-
-.reviews{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.review{
-    background:rgba(255,255,255,.05);
-    padding:30px;
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.review span{
-    color:#f9a8d4;
-    font-size:20px;
-}
-
 /* CONTACT */
 
 .contact-box{
@@ -346,17 +326,20 @@ section{
 .popup{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.92);
+    background:rgba(0,0,0,.93);
     display:none;
     justify-content:center;
     align-items:center;
     z-index:9999;
+    flex-direction:column;
+    padding:20px;
 }
 
 .popup img{
-    max-width:85%;
-    max-height:85%;
+    max-width:80%;
+    max-height:70%;
     border-radius:25px;
+    margin-bottom:25px;
 }
 
 .close{
@@ -366,6 +349,22 @@ section{
     font-size:40px;
     color:white;
     cursor:pointer;
+}
+
+.popup-review{
+    text-align:center;
+    max-width:500px;
+}
+
+.popup-review .stars{
+    color:#f9a8d4;
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+.popup-review p{
+    opacity:.9;
+    line-height:1.6;
 }
 
 /* FOOTER */
@@ -403,6 +402,10 @@ nav ul{
     justify-content:center;
 }
 
+.popup img{
+    max-width:95%;
+}
+
 }
 
 </style>
@@ -420,7 +423,6 @@ nav ul{
 <ul>
     <li><a href="#about">Hakkımızda</a></li>
     <li><a href="#products">Ürünler</a></li>
-    <li><a href="#reviews">Yorumlar</a></li>
     <li><a href="#contact">İletişim</a></li>
 </ul>
 
@@ -484,7 +486,10 @@ Türkiye’nin her yerine gönderim yapılır.
 NEW
 </div>
 
-<img src="tavsan.jpeg" onclick="openImage(this.src)">
+<img src="tavsan.jpeg"
+onclick="openImage(this.src,
+'⭐⭐⭐⭐⭐',
+'Çok tatlı ve yumuşak geldi 💖')">
 
 <div class="card-content">
 <h3>Örgü Tavşan</h3>
@@ -500,7 +505,10 @@ NEW
 NEW
 </div>
 
-<img src="kopek.jpeg" onclick="openImage(this.src)">
+<img src="kopek.jpeg"
+onclick="openImage(this.src,
+'⭐⭐⭐⭐⭐',
+'Çocuğum görünce bayıldı 🧸')">
 
 <div class="card-content">
 <h3>Sevimli Köpek</h3>
@@ -516,7 +524,10 @@ NEW
 NEW
 </div>
 
-<img src="prens.jpeg" onclick="openImage(this.src)">
+<img src="prens.jpeg"
+onclick="openImage(this.src,
+'⭐⭐⭐⭐⭐',
+'Fotoğraftakinden daha güzel geldi ✨')">
 
 <div class="card-content">
 <h3>Küçük Prens</h3>
@@ -524,37 +535,6 @@ NEW
 <div class="price">₺1190</div>
 </div>
 
-</div>
-
-</div>
-
-</section>
-
-<section id="reviews">
-
-<h2 class="title">Müşteri Yorumları</h2>
-
-<div class="reviews">
-
-<div class="review">
-<span>★★★★★</span>
-<p style="margin-top:15px;">
-Çok kaliteli geldi bayıldık 💖
-</p>
-</div>
-
-<div class="review">
-<span>★★★★★</span>
-<p style="margin-top:15px;">
-Fotoğraftakinden bile daha güzel geldi 🧸
-</p>
-</div>
-
-<div class="review">
-<span>★★★★★</span>
-<p style="margin-top:15px;">
-Hediye olarak aldım herkes çok beğendi ✨
-</p>
 </div>
 
 </div>
@@ -628,17 +608,34 @@ WhatsApp Sipariş
 
 <img id="popup-img">
 
+<div class="popup-review">
+
+<div class="stars" id="popup-stars"></div>
+
+<p id="popup-text"></p>
+
+</div>
+
 </div>
 
 <script>
 
-function openImage(src){
-    document.getElementById('popup').style.display='flex';
-    document.getElementById('popup-img').src=src;
+function openImage(src,stars,text){
+
+document.getElementById('popup').style.display='flex';
+
+document.getElementById('popup-img').src=src;
+
+document.getElementById('popup-stars').innerText=stars;
+
+document.getElementById('popup-text').innerText=text;
+
 }
 
 function closeImage(){
-    document.getElementById('popup').style.display='none';
+
+document.getElementById('popup').style.display='none';
+
 }
 
 function filterCards(category){
@@ -648,13 +645,15 @@ let cards=document.querySelectorAll('.card');
 cards.forEach(card=>{
 
 if(category==='all'){
-    card.style.display='block';
+card.style.display='block';
 }
+
 else if(card.classList.contains(category)){
-    card.style.display='block';
+card.style.display='block';
 }
+
 else{
-    card.style.display='none';
+card.style.display='none';
 }
 
 });
@@ -662,6 +661,6 @@ else{
 }
 
 </script>
-<h1>TEST123</h1>
+
 </body>
 </html>
