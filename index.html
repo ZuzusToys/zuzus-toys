@@ -30,8 +30,6 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 body::before{
     content:'';
     position:fixed;
@@ -48,8 +46,6 @@ body::before{
     from{transform:translateY(0);}
     to{transform:translateY(-20px);}
 }
-
-/* NAVBAR */
 
 nav{
     width:100%;
@@ -101,8 +97,6 @@ nav a:hover{
     color:var(--secondary);
 }
 
-/* HERO */
-
 .hero{
     min-height:85vh;
     display:flex;
@@ -141,8 +135,6 @@ nav a:hover{
     transform:translateY(-5px) scale(1.05);
 }
 
-/* SECTION */
-
 section{
     padding:100px 8%;
 }
@@ -153,8 +145,6 @@ section{
     margin-bottom:60px;
     color:#ddd6fe;
 }
-
-/* ABOUT */
 
 .about{
     display:grid;
@@ -169,8 +159,6 @@ section{
     backdrop-filter:blur(10px);
     border:1px solid rgba(255,255,255,.08);
 }
-
-/* FILTER */
 
 .filters{
     display:flex;
@@ -194,8 +182,6 @@ section{
 .filters button:hover{
     background:var(--secondary);
 }
-
-/* PRODUCTS */
 
 .cards{
     display:flex;
@@ -259,8 +245,6 @@ section{
     color:#f9a8d4;
 }
 
-/* FEATURES */
-
 .features{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -281,8 +265,6 @@ section{
     transform:translateY(-8px);
 }
 
-/* CONTACT */
-
 .contact-box{
     background:rgba(255,255,255,.05);
     padding:60px;
@@ -301,29 +283,6 @@ section{
     background:linear-gradient(135deg,var(--primary),var(--secondary));
     font-weight:600;
 }
-
-/* WHATSAPP */
-
-.whatsapp{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    background:#25D366;
-    color:white;
-    padding:18px 22px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:700;
-    box-shadow:0 0 25px rgba(37,211,102,.5);
-    z-index:999;
-    transition:.3s;
-}
-
-.whatsapp:hover{
-    transform:scale(1.1);
-}
-
-/* POPUP */
 
 .popup{
     position:fixed;
@@ -351,15 +310,11 @@ section{
     cursor:pointer;
 }
 
-/* FOOTER */
-
 footer{
     text-align:center;
     padding:40px;
     opacity:.7;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
 
@@ -552,7 +507,7 @@ onclick="openImage(this.src)">
 <div class="contact-box">
 
 <p>
-Sipariş için Instagram veya WhatsApp üzerinden ulaşabilirsiniz.
+Sipariş için Instagram üzerinden ulaşabilirsiniz.
 </p>
 
 <div class="socials">
@@ -573,14 +528,6 @@ Instagram'a Git
 <footer>
 © 2026 ZUZU'S TOYS
 </footer>
-
-<a class="whatsapp"
-target="_blank"
-href="https://wa.me/905059843638">
-
-WhatsApp Sipariş
-
-</a>
 
 <div class="popup" id="popup">
 
